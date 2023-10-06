@@ -2,7 +2,7 @@
 # Skeleton file 2 for Assignment 1 in BAN400. 
 # -------------------------------------------
 
-# More detailed steps to complete Problem 1.
+# Problem 1.
 
 library(tidyverse)    # Contains most of what we need.
 
