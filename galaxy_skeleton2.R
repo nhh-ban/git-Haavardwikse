@@ -1,9 +1,8 @@
-
 # Skeleton file 2 for Assignment 1 in BAN400. 
 # -------------------------------------------
 
-# More detailed steps to complete Problem 1.
-
+# Problem 2.
+#------------------
 library(tidyverse)    # Contains most of what we need.
 
 # Read the entire data file into memory using the readLines()-function. Use the
@@ -16,7 +15,7 @@ library(tidyverse)    # Contains most of what we need.
 # the file does not end with an "end of line"-character (EOL). This does not
 # seem to pose a problem later, and it seems that we can silece the warning by
 # switchin off the "warn"-argument. Do that if you wish.
-raw_file <- readLines(con = "?")
+raw_file <- readLines(con = "http://www.sao.ru/lv/lvgdb/article/suites_dw_Table1.txt")
 
 # Identify the line number L of the separator line between the column names and
 # the rest of the data table.
@@ -31,15 +30,15 @@ raw_file <- readLines(con = "?")
 
 # What do you need to replace the two question marks with in order to extract
 # the first two letters?
-substr(x = raw_file, start = ?, stop = ?)
+substr(x = raw_file, start = 1, stop = 2)
 
 # The next step is then to find out *which* line starts with "--", and pick out
 # the first one. This can be done in a nice little pipe, where you have to fill
 # out the question marks and the missing function names:
 L <- 
-  (substr(x = raw_file, start = ?, stop = ?) == "?") %>% 
-  function_that_returns_the_index_of_all_TRUES %>% 
-  function_that_picks_out_the_minimum_value
+  (substr(x = raw_file, start = 1, stop = 2) == "--") %>%
+  which() %>%
+  min()
 
 # Save the variable descriptions (i.e. the information in lines 1:(L-2)) in a
 # text-file for future reference using the cat()-function. The first argument is
@@ -47,7 +46,7 @@ L <-
 # "raw_file"-vector on a separate line we also provide the sep-argument, where
 # we put the "end-of-line"-character "\n". We also need to come up with a file
 # name. Replace the question marks:
-cat(?, sep = "\n", file = "?")
+cat(raw_file[1:(L-2)], sep = "\n", file = "variable_descriptions.txt")
 
 # Extract the variable names (i.e. line (L-1)), store the names in a vector.
 
@@ -64,9 +63,10 @@ cat(?, sep = "\n", file = "?")
 # apply the str_trim()-function (also in the stringr-package) to get rid of all
 # the empty space. Replace the question mark below:
 variable_names <- 
-  str_split(string = ?, pattern = "\\|") %>% 
+  str_split(string = raw_file[L-1], pattern = "\\|") %>% 
   unlist() %>% 
   str_trim()
+
 
 # Read the data. One way to do this is to rewrite the data to a new .csv-file
 # with comma-separators for instance using cat() again, with the variable names
@@ -79,9 +79,10 @@ variable_names <-
 # super for this kind of search-and-replace. Replace the question mark below.
 
 comma_separated_values <- 
-  ? %>% 
+  raw_file[(L+1):length(raw_file)] %>% 
   gsub("\\|", ",", .) %>% 
   gsub(" ", "", .)
+
 
 # We then just add the variable names (separated with commas) on top, and
 # cat()-the whole ting to a .csv-file in the same way as we did with the
@@ -92,15 +93,30 @@ comma_separated_values_with_names <-
     comma_separated_values)    
 
 # Replace the question mark and come up with a file name
-cat(?, sep = "\n", file = "?")
+cat(comma_separated_values_with_names, sep = "\n", file = "galaxies_data.csv")
 
 # Read the file back in as a normal csv-file. The readr-package is part of
 # tidyverse, so it is already loaded.
-galaxies <- read_csv("?")
+galaxies <- read_csv("galaxies_data.csv")
 
 
 # You should now have a nice, clean data frame with galaxies and their
 # characteristics in memory. As of March 2022 it should contain 796
 # observations.
+galaxies
 
+# Problem 3
+# ----------------
+# Plotting the dataset based on number of galxies and sizes.
+ggplot(galaxies, aes(x = a_26)) + 
+  geom_histogram(binwidth = 0.7, fill = "blue", alpha = 0.7) + 
+  theme_minimal() + 
+  labs(title = "Distribution of Galaxy Sizes", 
+       x = "Size", 
+       y = "Number of galaxies")
+
+# This plot shows the opposite, that there are a lot more small universes, this
+# is most likely because there are more small galaxies than big ones. This is 
+# shown through many studies of the universe. The reasons for there being more 
+# small universes is hard to know without going deep into science. 
 
