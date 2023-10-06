@@ -1,12 +1,14 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/ojZuXTA9)
 # :wave: Welcome to the first assignment in BAN400!
 This is the first assignment in BAN400. As you know -- given that you have come this far -- the assignments in BAN400 will be organized through Github and Github Classroom. By accepting this assignment, the repository will be copied to your Github user so that you can clone it to your own personal machine and work on it. Then, you simply commit your changes and push back to Github when you are done. You can commit and push as much as you want before the deadline. **Do not close the pull request for this repository, that is where the TAs will provide feedback for your work!**
 
 **Date:**
+05.10.23
 
 **Name:**
+Håvard Wikse
 
 **Student number:**
+s203515
 
 ## :information_source: Problem 1
 Update the personal information above.
@@ -34,6 +36,9 @@ You can, of course, move up and down this ladder of difficulty as you see fit yo
 ## Problem 3
 
 The authors of the papers referenced above claim that their galaxy catalog is approximately complete because it is a *representative* sample of a particular volume in space (the ball of radius 11 megaparsecs centered on you and me). There are, however, some signs that the smaller objects are under-represented in the sample. Can you make a plot that reveals this tendency and a likely explanation?
+
+**Answer:** 
+This plot shows the opposite, that there are a lot more small universes, this is most likely because there are more small galaxies than big ones. This is shown through many studies of the universe. The reasons for there being more small universes is hard to know without going deep into science. 
 
 ## Problem 4 (optional)
 
