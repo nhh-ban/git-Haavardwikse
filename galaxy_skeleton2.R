@@ -1,9 +1,8 @@
-
 # Skeleton file 2 for Assignment 1 in BAN400. 
 # -------------------------------------------
 
-# Problem 1.
-
+# Problem 2.
+#------------------
 library(tidyverse)    # Contains most of what we need.
 
 # Read the entire data file into memory using the readLines()-function. Use the
@@ -105,3 +104,18 @@ galaxies <- read_csv("galaxies_data.csv")
 # characteristics in memory. As of March 2022 it should contain 796
 # observations.
 galaxies
+
+# Problem 3
+# ----------------
+# Plotting the dataset based on number of galxies and sizes.
+ggplot(galaxies, aes(x = a_26)) + 
+  geom_histogram(binwidth = 0.7, fill = "blue", alpha = 0.7) + 
+  theme_minimal() + 
+  labs(title = "Distribution of Galaxy Sizes", 
+       x = "Size", 
+       y = "Number of galaxies")
+
+# This plot shows the opposite, that there are a lot more small universes, this
+# is most likely because there are more small galaxies than big ones. This is 
+# shown through many studies of the universe. The reasons for there being more 
+# small universes is hard to know without going deep into science. 
